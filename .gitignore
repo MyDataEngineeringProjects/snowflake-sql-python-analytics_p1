@@ -1,0 +1,18 @@
+# Environment variables
+.env
+
+# Python
+__pycache__
+.pyc
+.venv
+venv
+
+# Data files (raw datasets)
+.csv
+
+# OS files
+.DS_Store
+
+# IDEs
+.vscode
+.idea
