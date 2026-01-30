@@ -1,28 +1,34 @@
-# snowflake-sql-python-analytics_p1
-Project overview
+# End-to-End Analytics Pipeline with SQL, Python, and Snowflake
 
-Dataset description:
-https://www.kaggle.com/datasets/tunguz/online-retail
-This is a transnational data set which contains all the transactions occurring between 01/12/2010 and 09/12/2011 for a UK-based and registered non-store online retail.The company mainly sells unique all-occasion gifts. Many customers of the company are wholesalers.
+## 📌 Overview
+This project demonstrates an end-to-end data analytics pipeline using
+**Snowflake**, **SQL**, and **Python** on a real-world retail dataset.
 
-Architecture diagram
+It is designed for:
+- Teaching beginner–intermediate data engineering concepts
+- Showcasing portfolio-ready skills on GitHub
 
-How to run locally
+---
 
-SQL highlights:
+## 🧱 Architecture
+Raw CSV → Python ingestion → Snowflake RAW tables → SQL transformations → Analytics queries → Python visualization
 
-CREATE DATABASE retail_db;
-CREATE SCHEMA raw;
-CREATE SCHEMA analytics;
-CREATE WAREHOUSE retail_wh
-  WITH WAREHOUSE_SIZE = 'XSMALL'
-  AUTO_SUSPEND = 60;
+---
 
-Example insights:
-## Key Insights
-- 18% of customers generate over 60% of total revenue
-- UK accounts for the majority of transactions
-- Repeat customers have significantly higher AOV
+## 📊 Dataset
+**Online Retail II Dataset**
+- Real transactional e-commerce data
+- Orders, customers, products, revenue
+- Source: UCI / Kaggle
 
+---
 
-Teaching notes (optional section!)
+## 🛠️ Tech Stack
+- Snowflake (data warehouse)
+- SQL (ELT, analytics)
+- Python (pandas, Snowflake connector)
+- GitHub
+
+---
+
+## 📁 Project Structure
