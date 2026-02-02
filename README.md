@@ -31,4 +31,13 @@ Raw CSV → Python ingestion → Snowflake RAW tables → SQL transformations �
 
 ---
 
-## 📁 Project Structure
+## Data Load Validation
+
+After loading data into Snowflake, the following checks are performed:
+
+- Row count comparison between pandas DataFrame and Snowflake table
+- Date range sanity check on invoice_date
+- NULL handling verification
+- Aggregate value comparison for unit_price
+
+These checks ensure the data load completed correctly and without silent corruption.
