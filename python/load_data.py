@@ -27,7 +27,9 @@ conn = snowflake.connector.connect(
 
 cursor = conn.cursor()
 
-# truncate data
+# ----------------------------------------------------
+# truncate old data
+# ----------------------------------------------------
 cursor.execute("TRUNCATE TABLE raw.retail_raw")
 print("raw.retail_raw truncated before load")
 
