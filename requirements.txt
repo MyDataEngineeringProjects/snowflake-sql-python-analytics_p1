@@ -3,3 +3,4 @@ numpy
 snowflake-connector-python
 matplotlib
 python-dotenv
+sqlalchemy
