@@ -46,5 +46,8 @@ After loading data into Snowflake, the following checks are performed:
 - Pandas NaN values must be converted to NULL for databases
 - Row-by-row inserts do not scale; chunked bulk loading is required
 - ELT (SQL-based transformations) improves transparency and reproducibility
-- Column names returned via SQLAlchemy are normalized in pandas to avoid
-case-sensitivity issues across SQL dialects.
+- Column names returned via SQLAlchemy are normalized in pandas to avoid case-sensitivity issues across SQL dialects.
+
+  ## Sample Plot
+ 
+<img width="1000" height="500" alt="Figure_1" src="https://github.com/user-attachments/assets/18e2fadd-50f6-4b95-b86e-8e0e909e8a59" />
