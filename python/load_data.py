@@ -76,28 +76,31 @@ df = df.astype(object)
 # Replace NaN with None (Snowflake-safe NULL)
 df = df.where(pd.notnull(df), None)
 
-# Safety check (should now pass)
-# assert not df.isna().any().any(), "NaN values still exist in dataframe"
-
 # ----------------------------------------------------
 # Insert data into Snowflake
-# NOTE: using itertuples() to avoid pandas type issues
+# ----------------------------------------------------
+# Bulk insert using executemany() in batches (FAST + SAFE)
 # ----------------------------------------------------
 insert_sql = """
 INSERT INTO retail_raw
 VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
 """
 
-row_count = 0
+rows = list(df.itertuples(index=False, name=None))
+total_rows = len(rows)
+BATCH_SIZE = 10000
 
-for row in df.itertuples(index=False, name=None):
-    cursor.execute(insert_sql, row)
-    row_count += 1
+for start in range(0, total_rows, BATCH_SIZE):
+    end = start + BATCH_SIZE
+    batch = rows[start:end]
+    cursor.executemany(insert_sql, batch)
+    print(f"Inserted rows {start + 1} to {min(end, total_rows)}")
+
 
 # ----------------------------------------------------
 # Cleanup
 # ----------------------------------------------------
 cursor.close()
 conn.close()
-
-print(f"✅ Loaded {row_count} rows into raw.retail_raw")
+print("Done!");
+# print(f"✅ Loaded {row_count} rows into raw.retail_raw")
