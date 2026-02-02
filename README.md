@@ -38,14 +38,13 @@ After loading data into Snowflake, the following checks are performed:
 - NULL handling verification
 - Aggregate value comparison for unit_price
 
-- ----
-## Lessons Learned
+----
 
+## Lessons Learned
 - Real-world CSV files often use non-UTF8 encodings
 - Datetime normalization is critical before warehouse loading
 - Pandas NaN values must be converted to NULL for databases
 - Row-by-row inserts do not scale; chunked bulk loading is required
 - ELT (SQL-based transformations) improves transparency and reproducibility
-
-
-These checks ensure the data load completed correctly and without silent corruption.
+- Column names returned via SQLAlchemy are normalized in pandas to avoid
+case-sensitivity issues across SQL dialects.
